@@ -16,12 +16,11 @@ const baseURL =
     : "http://localhost:3000";
 
 export const auth = betterAuth({
-  baseURL,
-  trustedOrigins: [
-    "http://localhost:3000",
-    "https://bazartk-a7-ffhq.vercel.app",
-    "https://*.vercel.app",
-  ],
+  baseURL: "https://bazartk-a7-ffhq.vercel.app",
+trustedOrigins: [
+  "http://localhost:3000",
+  "https://bazartk-a7-ffhq.vercel.app",
+],
   emailAndPassword: { enabled: true },
   socialProviders: {
     google: {
