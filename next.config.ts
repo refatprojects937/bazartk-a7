@@ -1,22 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-   serverExternalPackages: ["mongodb"],
-  /* config options here */
-  experimental: {
-    agentFeedback: true,
-  },
-    cacheComponents: true,
-  partialPrefetching: true,
-  reactCompiler: true,
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
-    },
-  },
+  serverExternalPackages: ["mongodb"],
+  // ager config e `images` ba onno kichu thakle ekhane rekhe din
+  // `cacheComponents: true` line ta thakle MUCHHE din
 };
 
 export default nextConfig;

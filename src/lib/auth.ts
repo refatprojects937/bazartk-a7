@@ -2,14 +2,18 @@ import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "@better-auth/mongo-adapter";
 
-const client = new MongoClient(process.env.MONGODB_URL as string);
+const uri = process.env.MONGODB_URL;
+if (!uri) {
+  throw new Error("MONGODB_URL environment variable set kora nai");
+}
+
+const client = new MongoClient(uri);
 const db = client.db("bazardorr-b14-a0007");
 
 export const auth = betterAuth({
-  logger: { level: "debug" },
-  emailAndPassword: {
-    enabled: true,
-  },
+  baseURL: process.env.BETTER_AUTH_URL,
+  trustedOrigins: [process.env.BETTER_AUTH_URL as string],
+  emailAndPassword: { enabled: true },
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID as string,
