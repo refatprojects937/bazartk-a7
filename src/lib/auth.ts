@@ -10,9 +10,18 @@ if (!uri) {
 const client = new MongoClient(uri);
 const db = client.db("bazardorr-b14-a0007");
 
+const baseURL =
+  process.env.NODE_ENV === "production"
+    ? "https://bazartk-a7-ffhq.vercel.app"
+    : "http://localhost:3000";
+
 export const auth = betterAuth({
-  baseURL: process.env.BETTER_AUTH_URL,
-  trustedOrigins: [process.env.BETTER_AUTH_URL as string],
+  baseURL,
+  trustedOrigins: [
+    "http://localhost:3000",
+    "https://bazartk-a7-ffhq.vercel.app",
+    "https://*.vercel.app",
+  ],
   emailAndPassword: { enabled: true },
   socialProviders: {
     google: {
